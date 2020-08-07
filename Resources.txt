@@ -1,0 +1,83 @@
+##############################################
+Penetration Testing Websites & github repos
+##############################################
+1. tryhackme.com
+2. portswigger.net
+3. https://github.com/nahamsec/Resources-for-Beginner-Bug-Bounty-Hunters
+4. https://www.metasploit.com/get-started
+
+##############################################
+Youtube Channels
+##############################################
+1. John Hammond
+2. Computerphile
+3. LiveOverflow
+4. Null Byte
+5. Loi Liang Yang
+6. HackerSploit  -> shell scripting , advanced hacking etc.
+7. STOK
+8. soumilshah1995
+9. Socratica
+10.code
+11.Lucidius
+12.Corey Schafer -> flask,django etc
+13. Pretty Printed ->flask etc
+14. Saksham the computer guy
+
+
+HEROKU-WORDPRESS INTEGRATION
+https://technomile.github.io/wordpress/setup.html
+
+
+    Clone the repository
+
+    git clone https://github.com/technomile/Heroku-WordPress-PostgreSQL
+
+    Create a Heroku application
+
+    cd wordpress
+    heroku create
+
+    Install the Heroku Postgres plugin
+
+    heroku addons:add heroku-postgresql:hobby-dev
+
+    Install the New Relic plugin
+
+    heroku addons:add newrelic:wayne
+
+    Install the SendGrid plugin
+
+    heroku addons:add sendgrid:starter
+
+    Deploy to Heroku
+
+    git push heroku master
+
+    Run the the application:
+
+        Open the application in a browser:
+
+        heroku open
+
+
+
+
+
+
+Command to exit vim :":w !sudo tee %"
+
+
+
+
+###############################################
+      DARK MODE COLORS			      #
+###############################################
+card-colors : #1e1e26;
+back-color : #121212;
+
+neumorphic cards: 21px 21px 42px #0e0e0e, 
+             -21px -21px 42px #161616;
+
+https://blog.prototypr.io/how-to-design-a-dark-theme-for-your-android-app-3daeb264637
+
