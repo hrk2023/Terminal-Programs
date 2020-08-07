@@ -58,10 +58,20 @@
  85 vmap <Leader>y "+y
  86 vmap <Leader>= <C-W><C-=>
  87
- 88 " YCM
- 89 " The best part.
- 90 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
- 91 nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
+ 88
+ 89 "Autocomplete Bracket with Vanilla Vim
+ 90 inoremap " ""<left>
+ 91 inoremap ' ''<left>
+ 92 inoremap ( ()<left>
+ 93 inoremap [ []<left>
+ 94 inoremap { {}<left>
+ 95 inoremap {<CR> {<CR>}<ESC>O
+ 96 inoremap {;<CR> {<CR>};<ESC>O
+ 97
+ 98 " YCM
+ 99 " The best part.
+100 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
+101 nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
  92
  93 " RG
  94 " bind K to grep word under cursor
