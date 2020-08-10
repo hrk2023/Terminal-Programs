@@ -1,137 +1,148 @@
-  1 syntax on
-  2
-  3 set noerrorbells
-  4 set tabstop=4 softtabstop=4
-  5
-  6 set shiftwidth=4
-  7 set expandtab
-  8 set smartindent
-  9 set nu
- 10 set nowrap
- 11 set smartcase
- 12 set noswapfile
- 13 set nobackup
- 14 set undodir=~/.vim/undodir/
- 15 set undofile
- 16 set incsearch
- 17
- 18 set colorcolumn=80
- 19 highlight ColorColumn ctermbg=0 guibg=lightgrey
- 20 call plug#begin('~/.vim/plugged')
- 21 Plug 'morhetz/gruvbox'
- 22 Plug 'mbbill/undotree'
- 23 Plug 'ycm-core/YouCompleteMe'
- 24 Plug 'davidhalter/jedi-vim'
- 25 Plug 'jremmen/vim-ripgrep'
- 26 Plug 'tpope/vim-fugitive'
- 27 Plug 'leafgarland/typescript-vim'
- 28 Plug 'vim-utils/vim-man'
- 29 Plug 'lyuts/vim-rtags'
- 30 Plug 'mbbill/undotree'
- 31 Plug 'scrooloose/nerdtree'
- 32 Plug 'cakebaker/scss-syntax.vim'
- 33 Plug 'chr4/nginx.vim'
- 34 Plug 'chrisbra/csv.vim'                                                                                                                   1,1           Top  62
- 35 Plug 'Glench/Vim-Jinja2-Syntax'
- 36 Plug 'godlygeek/tabular'
- 37 Plug 'tpope/vim-markdown'
- 38 Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
- 39 Plug 'lifepillar/pgsql.vim'
- 40 Plug 'vim-scripts/AutoComplPop'
- 41 Plug 'othree/html5.vim'
- 42 Plug 'pangloss/vim-javascript'
- 43 Plug 'PotatoesMaster/i3-vim-syntax'
- 44 Plug 'stephpy/vim-yaml'
- 45 Plug 'tmux-plugins/vim-tmux'
- 46 Plug 'tpope/vim-git'
- 47 Plug 'tpope/vim-liquid'
- 48 Plug 'tpope/vim-rails'
- 49 Plug 'vim-python/python-syntax'
- 50 Plug 'vim-ruby/vim-ruby'
- 51 Plug 'wgwoods/vim-systemd-syntax'
- 52 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
- 53 Plug 'junegunn/fzf.vim'
- 54 Plug 'terryma/vim-multiple-cursors'
- 55 Plug 'mattn/emmet-vim'
- 56
- 57 call plug#end()
- 58
- 59
- 60 colorscheme gruvbox
- 61 set background=dark
- 62 let mapleader = " "
- 63
- 64 let g:netrw_browse_split = 2
- 65 let g:netrw_banner = 0
- 66 let g:netrw_winsize = 99
- 67
- 68 let g:ctrlp_use_caching = 0
- 69
- 70
- 71 "fzf Settings
- 72 "nmap ; :Files<CR>
- 73 "fzf Settings End
- 74
- 75
- 76 "Python Autocomplete Settings
- 77 let g:jedi#use_splits_not_buffers = "right"
- 78 "End Python Autocomple Settings
- 79
- 80 "Java Autocomplete Settings
- 81 "imap <C-j>a <Plug>(JavaComplete-Imports-AddMissing)
- 82 "autocmd FileType java setlocal omnifunc=javacomplete#Complete
- 83 "Java Autocomplete Settings End
- 84
- 85
- 86 "Emmet Settings
- 87 let g:user_emmet_mode='i'
- 88 let g:user_emmet_install_global = 0
- 89 autocmd FileType html,css EmmetInstall
- 90 "Emmet Settings End
- 91
- 92
- 93 nmap <leader>; :Files<CR>
- 94 nmap <leader>d :Ctrlw l<CR>
- 95 nmap <leader>a :Ctrlw h<CR>
- 96 nmap <leader>w :Ctrlw k<CR>
- 97 nmap <leader>s :Ctrlw j<CR>
- 98 nmap <leader>h :wincmd h<CR>
- 99 nmap <leader>j :wincmd j<CR>
-100 nmap <leader>k :wincmd k<CR>
-101 nmap <leader>l :wincmd l<CR>
-102 nmap <leader>u :UndotreeShow<CR>
-103 nmap <silent>; :
-104 nmap <leader>pf :CtrlP<CR>
-105 nnoremap <Leader>gd :GoDef<Enter>
-106 nnoremap <Leader>nt :NERDTreeToggle<Enter>
-107 nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
-108 nmap <Leader>vi :vertical resize +5<CR>
-109 nmap <Leader>vr :vertical resize -5<CR>
-110 nmap <Leader>hi :resize +5<CR>
-111 nmap <Leader>hr :resize -5<CR>
-112 nmap <Leader>t : below vertical terminal<CR>
-113 nmap <Leader>tb : below terminal<CR>
-114 nnoremap <silent> <Leader>;; iif err != nil { <esc>o} <esc>:w<CR>
-115 nmap <leader><leader> V
-116 vmap <Leader>y "+y
-117 vmap <Leader>= <C-W><C-=>
-118
-119
-120 "Autocomplete Bracket with Vanilla Vim
-121 inoremap " ""<left>
-122 inoremap ' ''<left>
-123 inoremap ( ()<left>
-124 inoremap [ []<left>
-125 inoremap { {}<left>
-126 inoremap {<CR> {<CR>}<ESC>O
-127 inoremap {;<CR> {<CR>};<ESC>O
-128
-129 " YCM
-130 " The best part.
-131 nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
-132 nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
-133
-134 " RG
-135 " bind K to grep word under cursor
-136 nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
-137 " command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
+syntax on
+set noerrorbells
+set tabstop=4 softtabstop=4
+set shiftwidth=4
+set expandtab
+set smartindent
+set nu
+set nowrap
+set smartcase
+set noswapfile
+set encoding=utf-8
+set cryptmethod=blowfish2
+set nobackup
+set undodir=~/.vim/undodir/
+set undofile
+set incsearch
+set colorcolumn=80
+
+
+highlight ColorColumn ctermbg=0 guibg=lightgrey
+
+
+call plug#begin('~/.vim/plugged')
+
+Plug 'morhetz/gruvbox'
+Plug 'mbbill/undotree'
+Plug 'ycm-core/YouCompleteMe'
+Plug 'davidhalter/jedi-vim'
+Plug 'jremmen/vim-ripgrep'
+Plug 'tpope/vim-fugitive'
+Plug 'leafgarland/typescript-vim'
+Plug 'vim-utils/vim-man'
+Plug 'lyuts/vim-rtags'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'mbbill/undotree'
+Plug 'scrooloose/nerdtree'
+Plug 'cakebaker/scss-syntax.vim'
+Plug 'chr4/nginx.vim'
+Plug 'chrisbra/csv.vim'                                                                                                                   1,1           Top  62
+Plug 'Glench/Vim-Jinja2-Syntax'
+Plug 'godlygeek/tabular'
+Plug 'tpope/vim-markdown'
+Plug 'iamcco/markdown-preview.nvim', { 'do': 'cd app & yarn install' }
+Plug 'lifepillar/pgsql.vim'
+Plug 'vim-scripts/AutoComplPop'
+Plug 'othree/html5.vim'
+Plug 'pangloss/vim-javascript'
+Plug 'PotatoesMaster/i3-vim-syntax'
+Plug 'stephpy/vim-yaml'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tpope/vim-git'
+Plug 'tpope/vim-liquid'
+Plug 'tpope/vim-rails'
+Plug 'vim-python/python-syntax'
+Plug 'vim-ruby/vim-ruby'
+Plug 'wgwoods/vim-systemd-syntax'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
+Plug 'terryma/vim-multiple-cursors'
+Plug 'mattn/emmet-vim'
+
+call plug#end()
+
+
+colorscheme gruvbox
+set background=dark
+
+
+let mapleader = " "
+
+
+let g:netrw_browse_split = 2
+let g:netrw_banner = 0
+let g:netrw_winsize = 99
+let g:ctrlp_use_caching = 0
+
+
+"fzf Settings
+nmap ; :Files<CR>
+"fzf Settings End
+
+
+"Python Autocomplete Settings
+let g:jedi#use_splits_not_buffers = "right"
+"End Python Autocomple Settings
+
+
+"Java Autocomplete Settings
+"imap <C-j>a <Plug>(JavaComplete-Imports-AddMissing)
+"autocmd FileType java setlocal omnifunc=javacomplete#Complete
+"Java Autocomplete Settings End
+
+
+"Emmet Settings
+let g:user_emmet_mode='i'
+let g:user_emmet_install_global = 0
+autocmd FileType html,css EmmetInstall
+"Emmet Settings End
+
+
+"Autocomplete Select First From PopUp
+set complete+=kspell
+set completeopt=menuone,longest
+"Autocomplete Select First From PopUp End
+
+
+nmap <leader>; :Files<CR>
+nmap <leader>up :source %<CR>
+nmap <leader>d :Ctrlw l<CR>
+nmap <leader>a :Ctrlw h<CR>
+nmap <leader>w :Ctrlw k<CR>
+nmap <leader>s :Ctrlw j<CR>
+nmap <leader>h :wincmd h<CR>
+nmap <leader>j :wincmd j<CR>
+nmap <leader>k :wincmd k<CR>
+nmap <leader>l :wincmd l<CR>
+nmap <leader>u :UndotreeShow<CR>
+nmap <silent>; :
+nmap <leader>pf :CtrlP<CR>
+nnoremap <Leader>gd :GoDef<Enter>
+nnoremap <Leader>nt :NERDTreeToggle<Enter>
+nnoremap <silent> <Leader>nf :NERDTreeFind<CR>
+nmap <Leader>vi :vertical resize +5<CR>
+nmap <Leader>vr :vertical resize -5<CR>
+nmap <Leader>hi :resize +5<CR>
+nmap <Leader>hr :resize -5<CR>
+nmap <Leader>t : below vertical terminal<CR>
+nmap <Leader>tb : below terminal<CR>
+nnoremap <silent> <Leader>;; iif err != nil { <esc>o} <esc>:w<CR>
+nmap <leader><leader> V
+vmap <Leader>y "+y
+vmap <Leader>= <C-W><C-=>
+"Autocomplete Bracket with Vanilla Vim
+inoremap " ""<left>
+inoremap ' ''<left>
+inoremap ( ()<left>
+inoremap [ []<left>
+inoremap { {}<left>
+inoremap {<CR> {<CR>}<ESC>O
+inoremap {;<CR> {<CR>};<ESC>O
+" YCM
+" The best part.
+nnoremap <silent> <Leader>gd :YcmCompleter GoTo<CR>
+nnoremap <silent> <Leader>gf :YcmCompleter FixIt<CR>
+" RG
+" bind K to grep word under cursor
+nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+" command -nargs=+ -complete=file -bar Rg silent! grep! <args>|cwindow|redraw!
