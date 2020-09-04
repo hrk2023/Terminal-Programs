@@ -15,12 +15,15 @@ POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(os_icon dir virtualenv vcs)
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status ssh time)
 POWERLEVEL9K_OS_ICON_BACKGROUND="#282828"
 POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+POWERLEVEL9K_SHORTEN_DIR_LENGTH=1
+POWERLEVEL9K_SHORTEN_STRATEGY=truncate_folders
+POWERLEVEL9K_SHORTEN_DELIMITER=""
 POWERLEVEL9K_TIME_FORMAT='%D{%I:%M}'
 POWERLEVEL9K_TIME_FOREGROUND="black"
 POWERLEVEL9K_TIME_BACKGROUND="white"
 POWERLEVEL9K_MULTILINE_FIRST_PROMPT_PREFIX='%F{blue}╭─'
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX='%F{blue}╰%f '
-POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="#1660e0"
+POWERLEVEL9K_DIR_DEFAULT_BACKGROUND=blue
 # VCS CONFIG 
 POWERLEVEL9K_VCS_CLEAN_FOREGROUND=black
 POWERLEVEL9K_VCS_CLEAN_BACKGROUND=green
@@ -134,5 +137,11 @@ alias ls="colorls"
 alias ls -l="colorls -l"
 alias ls -a="colorls -a"
 alias ls -al="colorls -al"
+alias docs="/media/cipherman/New\ Volume/"
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+# # Backup original prompt_dir function to _prompt_dir
+# eval "`declare -f prompt_dir | sed '1s/.*/_&/'`"
+# prompt_dir() {
+#   prompt_segment blue $CURRENT_FG "%c"
+#}
