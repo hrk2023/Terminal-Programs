@@ -176,9 +176,9 @@ augroup END
 
 
 " Makes Ascii art font
-nmap <leader>F :.!toilet -w 200 -f standard<CR>
-nmap <leader>f :.!toilet -w 200 -f small<CR>
-nmap <leader>1 :.!toilet -w 200 -f term -F border<CR>
+nmap <leader>F :.!toilet -w 150 -f standard<CR>
+nmap <leader>f :.!toilet -w 150 -f small<CR>
+nmap <leader>1 :.!toilet -w 150 -f term -F border<CR>
 " Makes Ascii art font end
 " YCM
 " The best part.
