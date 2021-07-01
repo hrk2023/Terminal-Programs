@@ -51,3 +51,4 @@ To make some custom commands which can be directly used from the terminal, it ca
         ```bash
         C:\>iplocate 23.23.23.23
         ```
+    Zaqw2WTN4JJ1Pl8Sffx3-w mega hrk recov yek
